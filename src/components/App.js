@@ -1,5 +1,12 @@
+import { Header, Table } from "./index";
+
 function App() {
-  return <div className="App">App</div>;
+  return (
+    <div className="App">
+      <Header />
+      <Table />
+    </div>
+  );
 }
 
 export default App;
