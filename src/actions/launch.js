@@ -3,7 +3,7 @@ import { UPDATE_LAUNCH } from "./actionTypes";
 
 export function fetchLaunch() {
   return async (dispatch) => {
-    const url = "https://api.spacexdata.com/v3/launches?limit=2";
+    const url = "https://api.spacexdata.com/v3/launches?limit=10";
     const response = await axios.get(url);
     // console.log("response", response);
     const data = await response.data;
