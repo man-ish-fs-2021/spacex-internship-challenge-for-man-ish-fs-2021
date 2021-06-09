@@ -26,10 +26,7 @@ code {
   left: 0px;
   top: 0px;
 
-  /* Nitro White */
-
   background: #ffffff;
-  /* Nitro Shadow */
 
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -54,14 +51,72 @@ table {
   left: 245px;
   top: 184px;
 
-  /* Nitro White */
-
   background: #ffffff;
-  /* Nitro Border */
 
   border: 1px solid #e4e4e7;
-  /* Nitro Shadow */
 
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
+}
+thead {
+  position: static;
+  width: 952px;
+
+  left: 0px;
+  top: 0px;
+
+  background: #f4f5f7;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+tr {
+  display: flex;
+  align-items: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  height: 40px;
+  justify-content: space-evenly;
+
+  color: #4b5563;
+}
+tbody {
+  position: static;
+  width: 952px;
+
+  left: 0px;
+  top: 0px;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+.tr-body {
+  display: flex;
+  height: 53px;
+  text-align: center;
+  align-items: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
+  justify-content: space-evenly;
+}
+.failure {
+  background: #fde2e1;
+  border-radius: 10px;
+}
+.successful {
+  text-align: center;
+  background: #def7ec;
+  border-radius: 20px;
+}
+.upcoming {
+  background: #fef3c7;
+  border-radius: 20px;
 }

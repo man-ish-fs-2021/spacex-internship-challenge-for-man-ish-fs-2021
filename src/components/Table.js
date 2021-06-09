@@ -27,7 +27,13 @@ export const Table = () => {
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+              <th
+                {...column.getHeaderProps({
+                  style: { minWidth: column.minWidth },
+                })}
+              >
+                {column.render("Header")}
+              </th>
             ))}
           </tr>
         ))}
@@ -36,9 +42,17 @@ export const Table = () => {
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()}>
+            <tr {...row.getRowProps()} className="tr-body">
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                return (
+                  <td
+                    {...cell.getCellProps({
+                      style: { minWidth: cell.column.minWidth },
+                    })}
+                  >
+                    {cell.render("Cell")}
+                  </td>
+                );
               })}
             </tr>
           );

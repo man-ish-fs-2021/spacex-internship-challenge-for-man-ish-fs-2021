@@ -2,17 +2,22 @@ export const COLUMNS = [
   {
     Header: "No:",
     id: "row",
+    minWidth: 32,
     // filterable: false,
-    Cell: (row) => {
+    Cell: ({ row }) => {
+      console.log(row);
       return <div>{row.index + 1}</div>;
     },
   },
   {
     Header: "Launched (UTC)",
     accessor: "launch_date_utc",
+    minWidth: 144,
     Cell: ({ value }) => {
-      const date = Date(value).substring(0, 15);
-      return <div>{date}</div>;
+      // console.log("Date", value);
+      const date = new Date(value);
+
+      return <div>{date.toString().substring(0, 21)}</div>;
     },
   },
   {
@@ -20,24 +25,28 @@ export const COLUMNS = [
     accessor: (row) => {
       return row.launch_site.site_name;
     },
+    minWidth: 120,
   },
   {
     Header: "Mission",
     accessor: "mission_name",
+    minWidth: 120,
   },
   {
     Header: "Orbit",
     accessor: (originalRow) => {
       return originalRow.rocket.second_stage.payloads[0].orbit;
     },
+    minWidth: 48,
   },
   {
     Header: "Launch Status",
     accessor: "upcoming",
+    minWidth: 88,
     Cell: ({ row }) => {
-      if (row.upcoming) {
+      if (row.original.upcoming) {
         return <div className="upcoming">Upcoming</div>;
-      } else if (row.launch_success) {
+      } else if (row.original.launch_success) {
         return <div className="successful">Success</div>;
       } else {
         return <div className="failure">Failure</div>;
@@ -46,6 +55,7 @@ export const COLUMNS = [
   },
   {
     Header: "Rocket",
+    minWidth: 88,
     accessor: (row) => {
       return row.rocket.rocket_name;
     },
