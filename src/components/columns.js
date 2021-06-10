@@ -30,7 +30,7 @@ export const COLUMNS = [
   {
     Header: "Mission",
     accessor: "mission_name",
-    minWidth: 120,
+    width: 150,
   },
   {
     Header: "Orbit",

@@ -109,6 +109,11 @@ tbody {
   line-height: 12px;
   justify-content: space-evenly;
 }
+.tr-body:hover {
+  cursor: pointer;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+}
 .failure {
   background: #fde2e1;
   border-radius: 10px;
@@ -126,9 +131,9 @@ tbody {
 .pagination {
   position: absolute;
   display: flex;
-  width: 280px;
+  width: 550px;
   height: 40px;
-  left: 957px;
+  left: 650px;
   top: 775px;
 }
 .cell {
@@ -140,12 +145,7 @@ tbody {
   width: 40px;
   height: 40px;
 }
-.next {
-  left: 750;
-}
-.prev {
-  left: 700px;
-}
+
 .pagination button {
   background-color: white;
 }
@@ -153,9 +153,104 @@ tbody {
   opacity: 50%;
   cursor: not-allowed;
 }
-.next:hover {
+.cell:hover {
   cursor: pointer;
 }
-.prev:hover {
+.cell:focus {
+  color: #45b3e3;
+  font-weight: bold;
+}
+/* modal */
+.modal-wrapper {
+  position: absolute;
+  width: 544px;
+  height: auto;
+  left: 448px;
+  top: 50px;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px;
+  /* Nitro White */
+
+  background: #ffffff;
+  /* Nitro Shadow */
+
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+}
+.icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 500px;
+  top: 20px;
+  order: 5;
+  opacity: 0.75;
+}
+.icon:hover {
   cursor: pointer;
+}
+.desc {
+  position: static;
+  width: 480px;
+  height: 120px;
+  left: 32px;
+  top: 150px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: center;
+
+  color: #1f2937;
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 16px 0px;
+  border-radius: 6px;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+
+  position: static;
+  width: 238px;
+  height: 72px;
+  left: 32px;
+  top: 32px;
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 16px 0px;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: static;
+  width: 480px;
+  height: 350.64px;
+  left: 32px;
+  top: 256px;
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  margin: 16px 0px;
 }
