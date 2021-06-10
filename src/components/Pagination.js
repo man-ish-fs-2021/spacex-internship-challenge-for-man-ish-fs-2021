@@ -1,7 +1,7 @@
 import React from "react";
 
 export const Pagination = (props) => {
-  console.log("Pagination props", props);
+  // console.log("Pagination props", props);
   const {
     nextPage,
     canNextPage,
@@ -35,7 +35,11 @@ export const Pagination = (props) => {
       </div>
 
       {pageOptions.map((page) => (
-        <button className="cell" onClick={() => gotoPage(page)}>
+        <button
+          className="cell"
+          onClick={() => gotoPage(page)}
+          key={`key-${page}`}
+        >
           {page + 1}
         </button>
       ))}
