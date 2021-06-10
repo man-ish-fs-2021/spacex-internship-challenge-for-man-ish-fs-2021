@@ -126,9 +126,9 @@ tbody {
 .pagination {
   position: absolute;
   display: flex;
-  width: 280px;
+  width: 550px;
   height: 40px;
-  left: 957px;
+  left: 650px;
   top: 775px;
 }
 .cell {
@@ -140,12 +140,7 @@ tbody {
   width: 40px;
   height: 40px;
 }
-.next {
-  left: 750;
-}
-.prev {
-  left: 700px;
-}
+
 .pagination button {
   background-color: white;
 }
@@ -153,9 +148,10 @@ tbody {
   opacity: 50%;
   cursor: not-allowed;
 }
-.next:hover {
+.cell:hover {
   cursor: pointer;
 }
-.prev:hover {
-  cursor: pointer;
+.cell:focus {
+  color: #45b3e3;
+  font-weight: bold;
 }

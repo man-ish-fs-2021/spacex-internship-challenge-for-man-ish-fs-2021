@@ -33,7 +33,7 @@ export const Table = () => {
               {headerGroup.headers.map((column) => (
                 <th
                   {...column.getHeaderProps({
-                    style: { minWidth: column.minWidth },
+                    style: { width: column.width },
                   })}
                 >
                   {column.render("Header")}
@@ -51,7 +51,7 @@ export const Table = () => {
                   return (
                     <td
                       {...cell.getCellProps({
-                        style: { minWidth: cell.column.minWidth },
+                        style: { width: cell.column.width },
                       })}
                     >
                       {cell.render("Cell")}
