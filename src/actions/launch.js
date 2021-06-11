@@ -2,20 +2,20 @@ import axios from "axios";
 import { UPDATE_LAUNCH, START_FETCH } from "./actionTypes";
 
 export function fetchLaunch() {
-  try {
-    return async (dispatch) => {
-      const url = "https://api.spacexdata.com/v3/launches";
-      dispatch(startFetch());
+  return async (dispatch) => {
+    const url = "https://api.spacexdata.com/v3/launches";
+    dispatch(startFetch());
+    try {
       const response = await axios.get(url);
       // console.log("response", response);
       const data = await response.data;
       console.log("data", data);
 
       dispatch(updateLaunch(data));
-    };
-  } catch (err) {
-    console.log(err);
-  }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 }
 export function startFetch() {
   return {

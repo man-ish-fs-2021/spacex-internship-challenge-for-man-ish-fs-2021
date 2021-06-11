@@ -4,6 +4,8 @@ import Modal from "react-modal";
 const ModalComp = (props) => {
   const { isOpen, onAfterOpen, onRequestClose } = props;
   console.log("modal", props);
+
+  // const wiki = props.links.wikipedia;
   return (
     <Modal
       isOpen={isOpen}
@@ -26,12 +28,46 @@ const ModalComp = (props) => {
         </svg>
       </div>
       <div className="modal">
-        <div className="header"></div>
+        <div className="header">
+          <div className="header-img"></div>
+          <div className="header-info">
+            <div className="upper">
+              <div className="header-mission">
+                <div className="header-mission-name">{props.mission_name}</div>
+                <div className="header-mission-status">
+                  {props.upcoming ? (
+                    <div className="upcoming">Upcoming</div>
+                  ) : props.launch_success ? (
+                    <div className="successful">Success</div>
+                  ) : (
+                    <div className="failure">Failed</div>
+                  )}
+                </div>
+              </div>
+              <div className="header-rocket">
+                <div className="header-rocket-name">
+                  {/* {props.rocket.rocket_name} */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="desc">
-          {props.details}
-          {/* <a href={`${props.links.wikipedia}`} target="_blank">
-            Wikipedia
-          </a> */}
+          {props.details ? (
+            <div>
+              <p>{props.details}</p>
+              {/* <a href={wiki} target="_blank"> */}
+              Wikipedia
+              {/* </a> */}
+            </div>
+          ) : (
+            <div>
+              No details available currently.
+              {/* <a href={wiki} target="_blank"> */}
+              Wikipedia
+              {/* </a> */}
+            </div>
+          )}
         </div>
         <div className="info"></div>
       </div>
