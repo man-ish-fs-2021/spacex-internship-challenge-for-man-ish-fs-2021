@@ -1,3 +1,5 @@
+import ColumnFilter from "./ColumnFilter";
+
 export const COLUMNS = [
   {
     Header: "No:",
@@ -5,9 +7,10 @@ export const COLUMNS = [
     minWidth: 32,
     // filterable: false,
     Cell: ({ row }) => {
-      console.log(row);
+      // console.log(row);
       return <div>{row.index + 1}</div>;
     },
+    disableFilters: true,
   },
   {
     Header: "Launched (UTC)",
@@ -19,6 +22,7 @@ export const COLUMNS = [
 
       return <div>{date.toString().substring(0, 21)}</div>;
     },
+    disableFilters: true,
   },
   {
     Header: "Location",
@@ -26,11 +30,13 @@ export const COLUMNS = [
       return row.launch_site.site_name;
     },
     minWidth: 120,
+    disableFilters: true,
   },
   {
     Header: "Mission",
     accessor: "mission_name",
     width: 150,
+    disableFilters: true,
   },
   {
     Header: "Orbit",
@@ -38,6 +44,7 @@ export const COLUMNS = [
       return originalRow.rocket.second_stage.payloads[0].orbit;
     },
     minWidth: 48,
+    disableFilters: true,
   },
   {
     Header: "Launch Status",
@@ -52,6 +59,22 @@ export const COLUMNS = [
         return <div className="failure">Failure</div>;
       }
     },
+    Filter: ColumnFilter,
+    // filter: (filter, Cell) => {
+    //   console.log("cell", Cell);
+    //   if (filter.value === "all") {
+    //     return true;
+    //   }
+    //   if (filter.value === "upcoming") {
+    //     return Cell.value === "NameOne";
+    //   }
+    //   if (filter.value === "successful") {
+    //     return Cell.value === "NameTwo";
+    //   }
+    //   if (filter.value === "failure") {
+    //     return Cell.value === "NameTwo";
+    //   }
+    // },
   },
   {
     Header: "Rocket",
@@ -59,5 +82,6 @@ export const COLUMNS = [
     accessor: (row) => {
       return row.rocket.rocket_name;
     },
+    disableFilters: true,
   },
 ];

@@ -9,15 +9,15 @@ function App() {
     dispatch(fetchLaunch());
   }, [dispatch]);
 
-  const isProgress = useSelector((state) => {
-    // console.log(state);
-    return state.launch.isProgress;
-  });
+  // const isProgress = useSelector((state) => {
+  //   // console.log(state);
+  //   return state.launch.isProgress;
+  // });
 
   return (
     <div className="App">
       <Header />
-      {isProgress ? <div>Loading</div> : <Table />}
+      <Table />
     </div>
   );
 }
