@@ -228,8 +228,6 @@ tbody {
   left: 32px;
   top: 32px;
 
-  /* Inside Auto Layout */
-
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -247,10 +245,137 @@ tbody {
   left: 32px;
   top: 256px;
 
-  /* Inside Auto Layout */
-
   flex: none;
   order: 2;
   flex-grow: 0;
   margin: 16px 0px;
+}
+.header-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: static;
+  width: 142px;
+  height: 69px;
+  left: 96px;
+  top: 1.5px;
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 24px;
+}
+.header-img {
+  position: static;
+  width: 72px;
+  height: 72px;
+  left: 0px;
+  top: 0px;
+
+  background: url(./images/image.png);
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 24px;
+}
+.upper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: static;
+  width: 142px;
+  height: 41px;
+  left: 0px;
+  top: 0px;
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 12px 0px;
+}
+
+.header-rocket {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+
+  position: static;
+  width: 49px;
+  height: 12px;
+  left: 0px;
+  top: 29px;
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 8px 0px;
+}
+.header-rocket-name {
+  position: static;
+  width: 49px;
+  height: 12px;
+  left: 0px;
+  top: 0px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
+
+  display: flex;
+  align-items: center;
+  color: #374151;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 16px;
+}
+.header-mission {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: static;
+  width: 142px;
+  height: 21px;
+  left: 0px;
+  top: 0px;
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 8px 0px;
+}
+.lower {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+
+  position: static;
+  width: 64.85px;
+  height: 16px;
+  left: 0px;
+  top: 53px;
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 12px 0px;
 }
