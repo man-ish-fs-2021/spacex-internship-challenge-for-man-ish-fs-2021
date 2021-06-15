@@ -3,11 +3,11 @@ import ColumnFilter from "./ColumnFilter";
 export const COLUMNS = [
   {
     Header: "No:",
-    id: "row",
+    accessor: "flight_number",
     minWidth: 32,
     // filterable: false,
     Cell: ({ row }) => {
-      // console.log(row);
+      console.log("Row", row);
       return <div>{row.index + 1}</div>;
     },
     disableFilters: true,
@@ -48,7 +48,7 @@ export const COLUMNS = [
   },
   {
     Header: "Launch Status",
-    accessor: "upcoming",
+    accessor: (originalRow) => {},
     minWidth: 88,
     Cell: ({ row }) => {
       if (row.original.upcoming) {
@@ -60,21 +60,29 @@ export const COLUMNS = [
       }
     },
     Filter: ColumnFilter,
-    // filter: (filter, Cell) => {
-    //   console.log("cell", Cell);
-    //   if (filter.value === "all") {
-    //     return true;
-    //   }
-    //   if (filter.value === "upcoming") {
-    //     return Cell.value === "NameOne";
-    //   }
-    //   if (filter.value === "successful") {
-    //     return Cell.value === "NameTwo";
-    //   }
-    //   if (filter.value === "failure") {
-    //     return Cell.value === "NameTwo";
-    //   }
-    // },
+    filter: (rows, columnIds, filterValue) => {
+      console.log("filterValue", filterValue);
+      console.log("rows", rows);
+      console.log("col", columnIds);
+      rows.map((row) => {
+        console.log("row", row);
+        let Rows = [];
+        if (filterValue === "all") {
+          return true;
+        }
+        // if (filterValue === null) {
+        //   return rows.upcoming === "upcoming";
+        // }
+        if (filterValue === true) {
+          Rows.push(row);
+        }
+        if (filterValue === false) {
+          Rows.push(row);
+        }
+        console.log("Rows", Rows);
+        return Rows;
+      });
+    },
   },
   {
     Header: "Rocket",

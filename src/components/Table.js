@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Pagination, LoadingState } from "./index";
+import { PaginationComp, LoadingState } from "./index";
 import { useSelector } from "react-redux";
 import { COLUMNS } from "./columns";
 import { useTable, usePagination, useFilters } from "react-table";
@@ -65,12 +65,12 @@ export const Table = () => {
             </tr>
           ))}
         </thead>
+        {isProgress && (
+          <tbody>
+            <LoadingState />
+          </tbody>
+        )}
         <tbody {...getTableBodyProps()}>
-          {isProgress && (
-            <div className="loading-state">
-              <LoadingState />
-            </div>
-          )}
           {page.map((row) => {
             prepareRow(row);
             return (
@@ -168,7 +168,7 @@ export const Table = () => {
         </div>
       </Modal>
 
-      <Pagination {...tableInstance} />
+      <PaginationComp {...tableInstance} />
     </>
   );
 };

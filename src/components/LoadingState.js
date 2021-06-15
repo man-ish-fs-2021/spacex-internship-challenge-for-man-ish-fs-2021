@@ -8,6 +8,7 @@ function LoadingState() {
       height="200"
       viewBox="0 0 200 200"
       fill="none"
+      className="loading-state"
     >
       <path
         d="M106 60C106 53.3726 103.314 48 100 48C96.6863 48 94 53.3726 94 60C94 66.6274 96.6863 72 100 72C103.314 72 106 66.6274 106 60Z"
