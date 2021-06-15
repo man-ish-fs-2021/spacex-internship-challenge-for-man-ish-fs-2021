@@ -114,6 +114,24 @@ tbody {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
 }
+.loading-state {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 3000px;
+  top: 150px;
+  transition-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
+  animation-name: rotate;
+  animation-duration: 0.5s;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .failure {
   background: #fde2e1;
   border-radius: 10px;

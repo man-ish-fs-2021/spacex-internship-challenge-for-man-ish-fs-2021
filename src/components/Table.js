@@ -1,21 +1,30 @@
 import React, { useMemo, useState } from "react";
-import { Pagination } from "./index";
+import { PaginationComp, LoadingState } from "./index";
 import { useSelector } from "react-redux";
 import { COLUMNS } from "./columns";
-import { useTable, usePagination } from "react-table";
+import { useTable, usePagination, useFilters } from "react-table";
 import Modal from "react-modal";
+import { ColumnFilter } from "./ColumnFilter";
 Modal.setAppElement("#root");
 export const Table = () => {
   const launch = useSelector((state) => state.launch.launch);
+  const isProgress = useSelector((state) => state.launch.isProgress);
   console.log("launch", launch);
   // const isProgress = useSelector((state) => state.launch.isProgress);
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => launch, [launch]);
+  const defaultColumnFilter = useMemo(() => {
+    return {
+      Filter: ColumnFilter,
+    };
+  }, []);
   const tableInstance = useTable(
     {
       columns,
       data,
+      defaultColumnFilter,
     },
+    useFilters,
     usePagination
   );
   const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
@@ -50,11 +59,17 @@ export const Table = () => {
                   })}
                 >
                   {column.render("Header")}
+                  <div>{column.canFilter ? column.render("Filter") : null}</div>
                 </th>
               ))}
             </tr>
           ))}
         </thead>
+        {isProgress && (
+          <tbody>
+            <LoadingState />
+          </tbody>
+        )}
         <tbody {...getTableBodyProps()}>
           {page.map((row) => {
             prepareRow(row);
@@ -126,7 +141,7 @@ export const Table = () => {
                 </div>
                 <div className="header-rocket">
                   <div className="header-rocket-name">
-                    {selectedRow.rocket.rocket_name}
+                    {/* {selectedRow.rocket.rocket_name} */}
                   </div>
                 </div>
               </div>
@@ -153,7 +168,7 @@ export const Table = () => {
         </div>
       </Modal>
 
-      <Pagination {...tableInstance} />
+      <PaginationComp {...tableInstance} />
     </>
   );
 };
