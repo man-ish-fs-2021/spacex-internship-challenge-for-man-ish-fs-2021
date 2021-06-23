@@ -44,6 +44,7 @@ table {
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
+  margin: 0px;
 
   position: absolute;
   width: 952px;
@@ -60,14 +61,12 @@ table {
   border-radius: 6px;
 }
 thead {
-  position: static;
+  position: relative;
   width: 952px;
-
-  left: 0px;
-  top: 0px;
-
+  left: -1px;
+  top: -1px;
   background: #f4f5f7;
-
+  border-radius: 6px;
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -82,7 +81,7 @@ tr {
   line-height: 12px;
   height: 40px;
   justify-content: space-evenly;
-
+  width: 100%;
   color: #4b5563;
 }
 
@@ -148,33 +147,46 @@ tbody {
 /* pagination */
 .pagination {
   position: absolute;
-  display: flex;
-  width: 550px;
+  width: auto;
   height: 40px;
-  left: 650px;
+  left: 905px;
   top: 775px;
+}
+.pagination-container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
 }
 .cell {
   border: 1px solid #e4e4e7;
   width: 40px;
   height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4b5563;
+  font-size: 12px;
 }
-.cell button {
-  width: 40px;
-  height: 40px;
+.prev {
+  border-radius: 6px 0px 0px 6px;
 }
-
-.pagination button {
+.next {
+  border-radius: 0px 6px 6px 0px;
+}
+.pagination .cell {
   background-color: white;
 }
-.pagination button:disabled {
-  opacity: 50%;
-  cursor: not-allowed;
-}
+
 .cell:hover {
   cursor: pointer;
 }
-.cell:focus {
+.disabledCell {
+  opacity: 50%;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.activeCell {
   color: #45b3e3;
   font-weight: bold;
 }
@@ -396,4 +408,12 @@ tbody {
   order: 1;
   flex-grow: 0;
   margin: 12px 0px;
+}
+/* global filter */
+.global-filter {
+  position: absolute;
+  width: 141px;
+  height: 16px;
+  left: 1056px;
+  top: 120px;
 }

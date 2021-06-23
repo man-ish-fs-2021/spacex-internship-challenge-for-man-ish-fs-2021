@@ -9,7 +9,7 @@ export function fetchLaunch() {
       const response = await axios.get(url);
       // console.log("response", response);
       const data = await response.data;
-      console.log("data", data);
+      // console.log("data", data);
 
       dispatch(updateLaunch(data));
     } catch (err) {
