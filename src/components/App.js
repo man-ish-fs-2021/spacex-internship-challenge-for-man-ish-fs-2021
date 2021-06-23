@@ -1,23 +1,26 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Header, Table } from "./index";
-import { useEffect } from "react";
+import { useEffect ,useMemo} from "react";
 import { fetchLaunch } from "../actions/launch";
+import { COLUMNS } from "./columns";
+
 
 function App() {
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchLaunch());
   }, [dispatch]);
-
-  // const isProgress = useSelector((state) => {
-  //   // console.log(state);
-  //   return state.launch.isProgress;
-  // });
+ const launch = useSelector((state) => state.launch.launch);
+  const isProgress = useSelector((state)=>state.launch.isProgress);
+  const columns = useMemo(() => COLUMNS, []);
+  const data = useMemo(() => launch, [launch]);
+  
 
   return (
     <div className="App">
       <Header />
-      <Table />
+      {isProgress?<div>Loading</div>:<Table columns={columns} data={data} />}
     </div>
   );
 }

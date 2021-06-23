@@ -1,5 +1,3 @@
-import ColumnFilter from "./ColumnFilter";
-
 export const COLUMNS = [
   {
     Header: "No:",
@@ -7,7 +5,7 @@ export const COLUMNS = [
     minWidth: 32,
     // filterable: false,
     Cell: ({ row }) => {
-      console.log("Row", row);
+      // console.log("Row", row);
       return <div>{row.index + 1}</div>;
     },
     disableFilters: true,
@@ -22,7 +20,7 @@ export const COLUMNS = [
 
       return <div>{date.toString().substring(0, 21)}</div>;
     },
-    disableFilters: true,
+    disableGlobalFilter: true,
   },
   {
     Header: "Location",
@@ -30,13 +28,13 @@ export const COLUMNS = [
       return row.launch_site.site_name;
     },
     minWidth: 120,
-    disableFilters: true,
+    disableGlobalFilter: true,
   },
   {
     Header: "Mission",
     accessor: "mission_name",
     width: 150,
-    disableFilters: true,
+    disableGlobalFilter: true,
   },
   {
     Header: "Orbit",
@@ -44,11 +42,17 @@ export const COLUMNS = [
       return originalRow.rocket.second_stage.payloads[0].orbit;
     },
     minWidth: 48,
-    disableFilters: true,
+    disableGlobalFilter: true,
   },
   {
-    Header: "Launch Status",
-    accessor: (originalRow) => {},
+    Header: "Launch-Status",
+    accessor: (originalRow) => {
+      if (originalRow.upcoming) {
+        return "upcoming";
+      } else {
+        return originalRow.launch_success;
+      }
+    },
     minWidth: 88,
     Cell: ({ row }) => {
       if (row.original.upcoming) {
@@ -59,30 +63,6 @@ export const COLUMNS = [
         return <div className="failure">Failure</div>;
       }
     },
-    Filter: ColumnFilter,
-    filter: (rows, columnIds, filterValue) => {
-      console.log("filterValue", filterValue);
-      console.log("rows", rows);
-      console.log("col", columnIds);
-      rows.map((row) => {
-        console.log("row", row);
-        let Rows = [];
-        if (filterValue === "all") {
-          return true;
-        }
-        // if (filterValue === null) {
-        //   return rows.upcoming === "upcoming";
-        // }
-        if (filterValue === true) {
-          Rows.push(row);
-        }
-        if (filterValue === false) {
-          Rows.push(row);
-        }
-        console.log("Rows", Rows);
-        return Rows;
-      });
-    },
   },
   {
     Header: "Rocket",
@@ -90,6 +70,6 @@ export const COLUMNS = [
     accessor: (row) => {
       return row.rocket.rocket_name;
     },
-    disableFilters: true,
+    disableGlobalFilter: true,
   },
 ];

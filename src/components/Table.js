@@ -1,34 +1,34 @@
 import React, { useMemo, useState } from "react";
 import { PaginationComp, LoadingState } from "./index";
 import { useSelector } from "react-redux";
-import { COLUMNS } from "./columns";
-import { useTable, usePagination, useFilters } from "react-table";
+import { useTable, usePagination, useGlobalFilter } from "react-table";
 import Modal from "react-modal";
-import { ColumnFilter } from "./ColumnFilter";
+import { GlobalFilter } from "./GlobalFilter";
 Modal.setAppElement("#root");
-export const Table = () => {
-  const launch = useSelector((state) => state.launch.launch);
+export const Table = ({ columns, data, header }) => {
   const isProgress = useSelector((state) => state.launch.isProgress);
-  console.log("launch", launch);
-  // const isProgress = useSelector((state) => state.launch.isProgress);
-  const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => launch, [launch]);
-  const defaultColumnFilter = useMemo(() => {
-    return {
-      Filter: ColumnFilter,
-    };
-  }, []);
+
   const tableInstance = useTable(
     {
       columns,
       data,
-      defaultColumnFilter,
     },
-    useFilters,
+    useGlobalFilter,
     usePagination
   );
-  const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
-    tableInstance;
+  // console.log("table instance", tableInstance);
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    prepareRow,
+    state,
+    setGlobalFilter,
+    preGlobalFilteredRows,
+  } = tableInstance;
+  // console.log(setGlobalFilter)
+  // console.log("table state", state);
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState({});
@@ -45,9 +45,14 @@ export const Table = () => {
   function closeModal() {
     setIsOpen(false);
   }
-  console.log("Selected row", selectedRow);
+  // console.log("Selected row", selectedRow);
   return (
     <>
+      <GlobalFilter
+        globalFilter={state.globalFilter}
+        setGlobalFilter={setGlobalFilter}
+        preGlobalFilteredRows={preGlobalFilteredRows}
+      />
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -59,7 +64,6 @@ export const Table = () => {
                   })}
                 >
                   {column.render("Header")}
-                  <div>{column.canFilter ? column.render("Filter") : null}</div>
                 </th>
               ))}
             </tr>
