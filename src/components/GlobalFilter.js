@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 const options = ["All Launches", "Upcoming", "Failed", "Succesful"];
 export const GlobalFilter = ({ setGlobalFilter, preGlobalFilteredRows }) => {
-  console.log("Golbal fiter rows", preGlobalFilteredRows);
+  // console.log("Golbal fiter rows", preGlobalFilteredRows);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   useEffect(() => {
@@ -16,11 +16,11 @@ export const GlobalFilter = ({ setGlobalFilter, preGlobalFilteredRows }) => {
     }
   }, [selectedOption]);
   const onOptionClicked = (value) => () => {
-    console.log("value selected", value);
+    // console.log("value selected", value);
     setSelectedOption(value);
     setIsOpen(false);
   };
-  console.log("selsctedoption", selectedOption);
+  // console.log("selsctedoption", selectedOption);
 
   const toggling = () => setIsOpen(!isOpen);
   return (
