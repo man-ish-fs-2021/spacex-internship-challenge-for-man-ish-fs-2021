@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // import { Pagination } from "antd";
 
 export const PaginationComp = (props) => {
-  console.log("Pagination props", props);
+  // console.log("Pagination props", props);
   const {
     nextPage,
     canNextPage,
@@ -57,7 +57,7 @@ export const PaginationComp = (props) => {
       </div>
     );
   }
-  console.log(maxPageNumberLimit);
+  // console.log(maxPageNumberLimit);
   let pageDecrementBtn = null;
   if (minPageNumberLimit >= 0) {
     pageDecrementBtn = (
