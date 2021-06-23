@@ -26,7 +26,7 @@ export const PaginationComp = (props) => {
   };
   const handleNext = () => {
     nextPage();
-    if (pageIndex + 1 > maxPageNumberLimit) {
+    if (pageIndex > maxPageNumberLimit - 1) {
       setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
       setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
     }
