@@ -34,8 +34,8 @@ export const Table = ({ columns, data }) => {
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
   }
-  const handleShow = (selectedId) => {
-    setSelectedRowId(selectedId);
+  const handleShow = (selectedId, date) => {
+    setSelectedRowId({ selectedId, date });
   };
 
   function closeModal() {
@@ -76,7 +76,7 @@ export const Table = ({ columns, data }) => {
                   console.log("selected", row);
 
                   openModal();
-                  handleShow(row.id);
+                  handleShow(row.id, row.original.launch_date_utc);
                 }}
               >
                 {row.cells.map((cell) => {

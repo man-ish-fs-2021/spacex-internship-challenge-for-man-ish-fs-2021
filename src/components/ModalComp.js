@@ -4,8 +4,9 @@ import Modal from "react-modal";
 const ModalComp = (props) => {
   const { rowData, isOpen, onAfterOpen, onRequestClose, data } = props;
   // console.log("modal", props);
-
-  console.log("data", data);
+  console.log("rwo", rowData);
+  console.log("data", data[0]);
+  const date = new Date(rowData.date);
 
   return (
     <Modal
@@ -16,7 +17,7 @@ const ModalComp = (props) => {
     >
       {data
         .filter((x, index) => {
-          return index == rowData;
+          return index == rowData.selectedId;
         })
         .map((row) => (
           <>
@@ -59,7 +60,11 @@ const ModalComp = (props) => {
                       </div>
                     </div>
                   </div>
-                  <div className="lower"></div>
+                  <div className="lower">
+                    <div className="image2"></div>
+                    <div className="image3"></div>
+                    <div className="image4"></div>
+                  </div>
                 </div>
               </div>
               <div className="desc">
@@ -67,19 +72,97 @@ const ModalComp = (props) => {
                   <div>
                     Data N/A currently
                     <span style={{ padding: 5 }}>
-                      <a href={row.links.wikipedia}>Wiki</a>
+                      <a href={row.links.wikipedia}>Wikipedia</a>
                     </span>
                   </div>
                 ) : (
                   <div>
-                    {row.details + "."}
+                    {row.details.substring(0, 250) + "...."}
                     <span style={{ padding: 5 }}>
-                      <a href={row.links.wikipedia}>Wiki</a>
+                      <a href={row.links.wikipedia}>Wikipedia</a>
                     </span>
                   </div>
                 )}
               </div>
-              <div className="info"></div>
+              <div className="info">
+                <div className="modal-row">
+                  <div className="modal-frame">
+                    <span className="modal-frame-1">Flight Number</span>
+                    <span className="modal-frame-2">{row.flight_number}</span>
+                  </div>
+                </div>
+                <div className="modal-row">
+                  <div className="modal-frame">
+                    <span className="modal-frame-1">Mission Name</span>
+                    <span className="modal-frame-2">{row.mission_name}</span>
+                  </div>
+                </div>
+                <div className="modal-row">
+                  <div className="modal-frame">
+                    <span className="modal-frame-1">Rocket Type</span>
+                    <span className="modal-frame-2">
+                      {row.rocket.rocket_type}
+                    </span>
+                  </div>
+                </div>
+                <div className="modal-row">
+                  <div className="modal-frame">
+                    <span className="modal-frame-1">Rocket Name</span>
+                    <span className="modal-frame-2">
+                      {row.rocket.rocket_name}
+                    </span>
+                  </div>
+                </div>
+                <div className="modal-row">
+                  <div className="modal-frame">
+                    <span className="modal-frame-1">Manufacturer</span>
+                    <span className="modal-frame-2">
+                      {row.rocket.second_stage.payloads[0].manufacturer}
+                    </span>
+                  </div>
+                </div>
+                <div className="modal-row">
+                  <div className="modal-frame">
+                    <span className="modal-frame-1">Nationality</span>
+                    <span className="modal-frame-2">
+                      {row.rocket.second_stage.payloads[0].nationality}
+                    </span>
+                  </div>
+                </div>
+                <div className="modal-row">
+                  <div className="modal-frame">
+                    <span className="modal-frame-1">Launch Date</span>
+                    <span className="modal-frame-2">
+                      {date.toString().substring(0, 21)}
+                    </span>
+                  </div>
+                </div>
+                <div className="modal-row">
+                  <div className="modal-frame">
+                    <span className="modal-frame-1">Payload Type</span>
+                    <span className="modal-frame-2">
+                      {row.rocket.second_stage.payloads[0].payload_type}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="modal-row">
+                  <div className="modal-frame">
+                    <span className="modal-frame-1">Orbit</span>
+                    <span className="modal-frame-2">
+                      {row.rocket.second_stage.payloads[0].orbit}
+                    </span>
+                  </div>
+                </div>
+                <div className="modal-row">
+                  <div className="modal-frame">
+                    <span className="modal-frame-1">Launch Site</span>
+                    <span className="modal-frame-2">
+                      {row.launch_site.site_name}
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </>
         ))}
