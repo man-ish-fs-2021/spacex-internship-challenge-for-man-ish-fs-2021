@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Modal from "react-modal";
 
 const ModalComp = (props) => {
   const { rowData, isOpen, onAfterOpen, onRequestClose, data } = props;
   // console.log("modal", props);
-  console.log("rwo", rowData);
-  console.log("data", data[0]);
+  // console.log("rwo", rowData);
+  // console.log("data", data[0]);
   const date = new Date(rowData.date);
 
   return (

@@ -2,7 +2,7 @@ export const COLUMNS = [
   {
     Header: "No:",
     accessor: "flight_number",
-    minWidth: 32,
+    minWidth: 20,
     // filterable: false,
     Cell: ({ row }) => {
       // console.log("Row", row);
