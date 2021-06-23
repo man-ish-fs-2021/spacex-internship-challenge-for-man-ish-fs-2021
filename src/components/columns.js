@@ -18,7 +18,7 @@ export const COLUMNS = [
       // console.log("Date", value);
       const date = new Date(value);
 
-      return <div>{date.toString().substring(0, 21)}</div>;
+      return date.toString().substring(0, 21);
     },
     disableGlobalFilter: true,
   },
