@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
+import "../dropdown.css";
 const options = ["All Launches", "Upcoming", "Failed", "Succesful"];
-export const GlobalFilter = ({ setGlobalFilter, preGlobalFilteredRows }) => {
+export const GlobalFilter = ({ setGlobalFilter, rows }) => {
   // console.log("Golbal fiter rows", preGlobalFilteredRows);
+  console.log("filtered rows", rows);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   useEffect(() => {
-    if (selectedOption == "All Launches") {
+    if (selectedOption === "All Launches") {
       setGlobalFilter("");
-    } else if (selectedOption == "Upcoming") {
+    } else if (selectedOption === "Upcoming") {
       setGlobalFilter("upcoming");
-    } else if (selectedOption == "Succesful") {
+    } else if (selectedOption === "Succesful") {
       setGlobalFilter("true");
     } else if (selectedOption === "Failed") {
       setGlobalFilter("false");
     }
-  }, [selectedOption]);
+  }, [selectedOption, setGlobalFilter]);
   const onOptionClicked = (value) => () => {
     // console.log("value selected", value);
     setSelectedOption(value);
@@ -25,18 +27,6 @@ export const GlobalFilter = ({ setGlobalFilter, preGlobalFilteredRows }) => {
   const toggling = () => setIsOpen(!isOpen);
   return (
     <>
-      {/* <select
-        className="global-filter"
-        onChange={(e) => {
-          setGlobalFilter(e.target.value);
-          console.log("vlaue of target", e.target.value);
-        }}
-      >
-        <option value="">All</option>
-        <option value="upcoming">Upcoming</option>
-        <option value={false}>Failed</option>
-        <option value={true}>Success</option>
-      </select> */}
       <div className="DropDownContainer">
         <div className="DropDownHeader" onClick={toggling}>
           <span className="filter-icon">

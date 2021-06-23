@@ -1,10 +1,10 @@
-import React, { useMemo, useState } from "react";
-import { PaginationComp, LoadingState } from "./index";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { PaginationComp } from "./index";
 import { useTable, usePagination, useGlobalFilter } from "react-table";
 import Modal from "react-modal";
 import { GlobalFilter } from "./GlobalFilter";
 import ModalComp from "./ModalComp";
+
 Modal.setAppElement("#root");
 export const Table = ({ columns, data }) => {
   const tableInstance = useTable(

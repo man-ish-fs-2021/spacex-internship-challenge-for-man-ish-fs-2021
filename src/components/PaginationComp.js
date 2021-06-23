@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-// import "antd/dist/antd.css";
-// import { Pagination } from "antd";
+import "../pagination.css";
 
 export const PaginationComp = (props) => {
   // console.log("Pagination props", props);
@@ -19,7 +18,7 @@ export const PaginationComp = (props) => {
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(3);
   const handlePrev = () => {
     previousPage();
-    if (pageIndex % pageNumberLimit == 0) {
+    if (pageIndex % pageNumberLimit === 0) {
       setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
       setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
     }
@@ -31,15 +30,16 @@ export const PaginationComp = (props) => {
       setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
     }
   };
-  const renderPageNumbers = pageOptions.map((pageNumber) => {
+  const renderPageNumbers = pageOptions.map((pageNumber, index) => {
     if (
       pageNumber < maxPageNumberLimit + 1 &&
       pageNumber > minPageNumberLimit
     ) {
       return (
         <div
-          className={pageIndex == pageNumber ? "cell activeCell" : "cell"}
+          className={pageIndex === pageNumber ? "cell activeCell" : "cell"}
           onClick={() => gotoPage(pageNumber)}
+          key={`${index}-index`}
         >
           {pageNumber + 1}
         </div>
@@ -67,6 +67,7 @@ export const PaginationComp = (props) => {
       </div>
     );
   }
+
   return (
     <div className="pagination">
       <div className="pagination-container">
