@@ -3,9 +3,7 @@ export const COLUMNS = [
     Header: "No:",
     accessor: "flight_number",
     minWidth: 20,
-    // filterable: false,
     Cell: ({ row }) => {
-      // console.log("Row", row);
       return <div>{row.index + 1}</div>;
     },
     disableFilters: true,
@@ -15,7 +13,6 @@ export const COLUMNS = [
     accessor: "launch_date_utc",
     minWidth: 144,
     Cell: ({ value }) => {
-      // console.log("Date", value);
       const date = new Date(value);
 
       return date.toString().substring(0, 21);

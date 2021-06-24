@@ -3,7 +3,7 @@ const initialState = {
   launch: [],
   isProgress: false,
 };
-
+// reducer
 export default function launches(state = initialState, action) {
   switch (action.type) {
     case START_FETCH:

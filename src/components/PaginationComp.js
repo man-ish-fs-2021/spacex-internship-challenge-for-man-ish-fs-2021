@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../pagination.css";
 
 export const PaginationComp = (props) => {
-  // console.log("Pagination props", props);
   const {
     nextPage,
     canNextPage,
@@ -12,10 +11,11 @@ export const PaginationComp = (props) => {
     gotoPage,
     state: { pageIndex },
   } = props;
-
+  // pagination states
   const [pageNumberLimit] = useState(4);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(-1);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(3);
+  // pagination actions
   const handlePrev = () => {
     previousPage();
     if (pageIndex % pageNumberLimit === 0) {
@@ -30,6 +30,7 @@ export const PaginationComp = (props) => {
       setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
     }
   };
+  // pagination page numbers component
   const renderPageNumbers = pageOptions.map((pageNumber, index) => {
     if (
       pageNumber < maxPageNumberLimit + 1 &&
@@ -48,6 +49,7 @@ export const PaginationComp = (props) => {
       return null;
     }
   });
+  // pagination increment and decrement ...
   let pageIncrementBtn = null;
   if (pageOptions.length > maxPageNumberLimit + 1) {
     pageIncrementBtn = (
@@ -57,7 +59,6 @@ export const PaginationComp = (props) => {
       </div>
     );
   }
-  // console.log(maxPageNumberLimit);
   let pageDecrementBtn = null;
   if (minPageNumberLimit >= 0) {
     pageDecrementBtn = (

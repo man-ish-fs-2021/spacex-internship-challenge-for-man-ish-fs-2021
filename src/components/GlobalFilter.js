@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../dropdown.css";
+// global filter options
 const options = ["All Launches", "Upcoming", "Failed", "Succesful"];
 export const GlobalFilter = ({ setGlobalFilter, rows }) => {
-  // console.log("Golbal fiter rows", preGlobalFilteredRows);
-  console.log("filtered rows", rows);
+  // state for the dropdown list
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
+  // setting the global filter
   useEffect(() => {
     if (selectedOption === "All Launches") {
       setGlobalFilter("");
@@ -18,11 +19,9 @@ export const GlobalFilter = ({ setGlobalFilter, rows }) => {
     }
   }, [selectedOption, setGlobalFilter]);
   const onOptionClicked = (value) => () => {
-    // console.log("value selected", value);
     setSelectedOption(value);
     setIsOpen(false);
   };
-  // console.log("selsctedoption", selectedOption);
 
   const toggling = () => setIsOpen(!isOpen);
   return (

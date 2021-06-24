@@ -1,4 +1,5 @@
 import React from "react";
+// animation is desplayed during the loading state
 
 function LoadingState() {
   return (

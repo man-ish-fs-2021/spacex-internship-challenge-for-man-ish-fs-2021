@@ -1,19 +1,18 @@
 import axios from "axios";
+import { API } from "../utils/url";
 import { UPDATE_LAUNCH, START_FETCH } from "./actionTypes";
-
+// redux action
 export function fetchLaunch() {
   return async (dispatch) => {
-    const url = "https://api.spacexdata.com/v3/launches";
+    const url = API.root();
     dispatch(startFetch());
     try {
       const response = await axios.get(url);
-      // console.log("response", response);
       const data = await response.data;
-      // console.log("data", data);
 
       dispatch(updateLaunch(data));
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 }
