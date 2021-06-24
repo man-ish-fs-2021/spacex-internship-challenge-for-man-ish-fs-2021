@@ -6,7 +6,7 @@ import image4 from "../images/image4.png";
 
 const ModalComp = (props) => {
   const { rowData, isOpen, onAfterOpen, onRequestClose, data } = props;
-
+  // passing memorised data
   const date = new Date(rowData.date);
 
   return (
@@ -16,6 +16,7 @@ const ModalComp = (props) => {
       onRequestClose={onRequestClose}
       className="modal-wrapper"
     >
+      {/* selecting only the clicked modal */}
       {data
         .filter((x, index) => {
           return index == rowData.selectedId;
@@ -91,7 +92,7 @@ const ModalComp = (props) => {
                   </div>
                 ) : (
                   <div>
-                    {row.details.substring(0, 250) + "...."}
+                    {row.details.substring(0, 250) + "..."}
                     <span style={{ padding: 5 }}>
                       <a href={row.links.wikipedia}>Wikipedia</a>
                     </span>

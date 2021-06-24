@@ -7,12 +7,14 @@ import LoadingState from "./LoadingState";
 import "../loadingState.css";
 
 function App() {
+  // dipatching using redux hooks.
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchLaunch());
   }, [dispatch]);
   const launch = useSelector((state) => state.launch.launch);
   const isProgress = useSelector((state) => state.launch.isProgress);
+  // memorising the columns for the table
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => launch, [launch]);
 

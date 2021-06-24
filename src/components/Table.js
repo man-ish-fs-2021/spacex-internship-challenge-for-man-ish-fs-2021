@@ -4,7 +4,7 @@ import { useTable, usePagination, useGlobalFilter } from "react-table";
 import Modal from "react-modal";
 import { GlobalFilter } from "./GlobalFilter";
 import ModalComp from "./ModalComp";
-
+// react-modal component
 Modal.setAppElement("#root");
 export const Table = ({ columns, data }) => {
   const tableInstance = useTable(
@@ -26,7 +26,7 @@ export const Table = ({ columns, data }) => {
     preGlobalFilteredRows,
     globalFilteredRows,
   } = tableInstance;
-  console.log(tableInstance);
+  // modal state
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedRowId, setSelectedRowId] = useState({});
   function openModal() {
@@ -36,6 +36,7 @@ export const Table = ({ columns, data }) => {
     // references are now sync'd and can be accessed.
   }
   const handleShow = (selectedId, date) => {
+    // sending the id of the selected row to the modal
     setSelectedRowId({ selectedId, date });
   };
 
@@ -78,8 +79,6 @@ export const Table = ({ columns, data }) => {
                 {...row.getRowProps()}
                 className="tr-body"
                 onClick={() => {
-                  // console.log("selected", row);
-
                   openModal();
                   handleShow(row.id, row.original.launch_date_utc);
                 }}

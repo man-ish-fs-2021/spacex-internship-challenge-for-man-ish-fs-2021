@@ -1,5 +1,5 @@
 import React from "react";
-
+// top section with the logog
 function Header(props) {
   return (
     <div className="header">
