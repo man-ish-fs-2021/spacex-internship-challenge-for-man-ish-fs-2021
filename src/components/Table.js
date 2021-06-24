@@ -24,8 +24,9 @@ export const Table = ({ columns, data }) => {
     state,
     setGlobalFilter,
     preGlobalFilteredRows,
+    globalFilteredRows,
   } = tableInstance;
-
+  console.log(tableInstance);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedRowId, setSelectedRowId] = useState({});
   function openModal() {
@@ -64,7 +65,11 @@ export const Table = ({ columns, data }) => {
             </tr>
           ))}
         </thead>
-
+        {globalFilteredRows.length === 0 && (
+          <div className="empty-state">
+            No results found for the specified filter
+          </div>
+        )}
         <tbody {...getTableBodyProps()} className="table-body">
           {page.map((row) => {
             prepareRow(row);
@@ -73,7 +78,7 @@ export const Table = ({ columns, data }) => {
                 {...row.getRowProps()}
                 className="tr-body"
                 onClick={() => {
-                  console.log("selected", row);
+                  // console.log("selected", row);
 
                   openModal();
                   handleShow(row.id, row.original.launch_date_utc);

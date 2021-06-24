@@ -1,11 +1,12 @@
 import React from "react";
 import Modal from "react-modal";
+import image2 from "../images/image2.png";
+import image3 from "../images/image3.png";
+import image4 from "../images/image4.png";
 
 const ModalComp = (props) => {
   const { rowData, isOpen, onAfterOpen, onRequestClose, data } = props;
-  // console.log("modal", props);
-  // console.log("rwo", rowData);
-  // console.log("data", data[0]);
+
   const date = new Date(rowData.date);
 
   return (
@@ -61,9 +62,22 @@ const ModalComp = (props) => {
                     </div>
                   </div>
                   <div className="lower">
-                    <div className="image2"></div>
-                    <div className="image3"></div>
-                    <div className="image4"></div>
+                    <div className="image2">
+                      <a href={row.links.presskit}>
+                        <img src={image2} alt="nasa"></img>
+                      </a>
+                    </div>
+                    <div className="image3">
+                      <a href={row.links.wikipedia}>
+                        <img src={image3} alt="wiki" />
+                      </a>
+                    </div>
+
+                    <div className="image4">
+                      <a href={row.links.video_link}>
+                        <img src={image4} alt="youtube" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>

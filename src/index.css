@@ -120,6 +120,7 @@ tbody {
 }
 
 .failure {
+  text-align: center;
   background: #fde2e1;
   border-radius: 10px;
   box-sizing: border-box;
@@ -133,10 +134,33 @@ tbody {
   padding: 3px;
 }
 .upcoming {
+  text-align: center;
   background: #fef3c7;
   border-radius: 20px;
+  box-sizing: border-box;
+  padding: 3px;
 }
+.empty-state {
+  position: absolute;
+  width: 259px;
+  height: 14px;
+  left: 591px;
+  top: 273px;
 
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  /* identical to box height, or 100% */
+
+  display: flex;
+  align-items: center;
+
+  /* Nitro Gray 700 */
+
+  color: #374151;
+}
 /* modal */
 .modal-wrapper {
   position: absolute;
@@ -185,10 +209,10 @@ tbody {
   font-weight: normal;
   font-size: 14px;
   line-height: 24px;
-
+  padding-top: 10px;
   display: flex;
   align-items: center;
-
+  text-align: justify;
   color: #1f2937;
 
   flex: none;
@@ -230,7 +254,7 @@ tbody {
   flex: none;
   order: 1;
   flex-grow: 0;
-  margin: 0px 24px;
+  margin: 0px 20px;
 }
 .header-img {
   position: static;
@@ -275,7 +299,7 @@ tbody {
   width: 100px;
   height: 12px;
   left: 0px;
-  top: 19px;
+  top: 9px;
 
   /* Inside Auto Layout */
 
@@ -321,19 +345,19 @@ tbody {
   flex: none;
   order: 0;
   flex-grow: 0;
-  margin: 8px 0px;
+  margin: 9px 0px;
 }
 .header-mission-name {
   position: static;
   width: auto;
-  max-width: 120px;
+  max-width: 140px;
   height: 22px;
   left: 0px;
   top: 0px;
 
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 18px;
   /* identical to box height, or 100% */
 
@@ -373,7 +397,7 @@ tbody {
   flex: none;
   order: 1;
   flex-grow: 0;
-  margin: 0px 16px;
+  margin: 0px -2px;
 }
 .header-mission-status > div {
   font-size: 12px;
@@ -388,7 +412,7 @@ tbody {
   position: relative;
   width: 80px;
   height: 16px;
-  left: 0px;
+  left: -13px;
   top: 25px;
 
   /* Inside Auto Layout */
@@ -398,23 +422,21 @@ tbody {
   flex-grow: 0;
   /* margin: 12px 0px; */
 }
-.image2 {
+.image2 img {
   position: static;
   width: 16.85px;
   height: 14px;
   left: 0px;
   top: 1px;
-  background: url(./images/image2.png);
 }
-.image3 {
+.image3 img {
   position: static;
   width: 16px;
   height: 16px;
   left: 24.85px;
   top: 0px;
-  background: url(./images/image3.png);
 }
-.image4 {
+.image4 img {
   position: static;
   width: 18px;
   height: 16px;
@@ -422,7 +444,6 @@ tbody {
   right: 0%;
   top: 0%;
   bottom: 0%;
-  background: url(./images/image4.png);
 }
 .info {
   display: flex;
@@ -537,83 +558,4 @@ tbody {
   order: 1;
   flex-grow: 0;
   margin: 0px 16px;
-}
-
-/* loading state */
-.loading-state-table {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  margin: 0px;
-
-  position: absolute;
-  width: 952px;
-  height: auto;
-  min-height: 575px;
-  left: 245px;
-  top: 184px;
-
-  background: #ffffff;
-
-  border: 1px solid #e4e4e7;
-
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-}
-.loading-state-table-head {
-  position: relative;
-  width: 952px;
-  left: -1px;
-  top: -1px;
-  background: #f4f5f7;
-  border-radius: 6px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0px 0px;
-}
-.loading-state-table-row {
-  display: flex;
-  align-items: center;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 12px;
-  height: 40px;
-  justify-content: space-evenly;
-  width: 100%;
-  color: #4b5563;
-}
-.loading-state-table-body {
-  position: static;
-  width: 952px;
-
-  left: 0px;
-  top: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  order: 0;
-  flex-grow: 0;
-  margin: 0px 0px;
-}
-.loading-state {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  /* left: 3000px; */
-  top: 150px;
-  transition-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
-  animation-name: rotate;
-  animation-duration: 0.35s;
-  animation-iteration-count: infinite;
-}
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

@@ -4,6 +4,7 @@ import { useEffect, useMemo } from "react";
 import { fetchLaunch } from "../actions/launch";
 import { COLUMNS } from "./columns";
 import LoadingState from "./LoadingState";
+import "../loadingState.css";
 
 function App() {
   const dispatch = useDispatch();
